@@ -1,7 +1,10 @@
 import { Router } from "express";
 import schemaValidation from "../middlewares/schemaValidation.js";
 import flightsSchema from "../schemas/flightsSchema.js";
+import { postFlight } from "../controllers/flightsController.js";
 
-const flightRouter = Router();
+const flightRoute = Router();
 
-flightRouter.post("/flights", schemaValidation(flightsSchema));
+flightRoute.post("/flights", schemaValidation(flightsSchema), postFlight);
+
+export default flightRoute;

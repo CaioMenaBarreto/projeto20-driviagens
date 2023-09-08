@@ -4,7 +4,7 @@ import { citiesService } from "../services/citiesService.js";
 export async function postCities(req, res) {
     const { name } = req.body;
     try{
-        const city = await citiesService.postCitiesService(name);
+        await citiesService.postCitiesService(name);
         res.sendStatus(httpStatus.CREATED);
     } catch(err) {
         console.log(err);
