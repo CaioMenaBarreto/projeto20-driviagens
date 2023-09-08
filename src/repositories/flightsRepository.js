@@ -11,3 +11,7 @@ export async function verifyDestinationById(destination){
 export async function insertFlight(origin, destination, date){
     return await db.query(`INSERT INTO flights (origin, destination, date) VALUES ($1, $2, $3);`, [origin, destination, date]);
 };
+
+export async function getFlightById(flightId){
+    return await db.query(`SELECT * FROM flights WHERE id = $1;`, [flightId]);
+}
