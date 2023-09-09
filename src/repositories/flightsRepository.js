@@ -14,4 +14,20 @@ export async function insertFlight(origin, destination, date){
 
 export async function getFlightById(flightId){
     return await db.query(`SELECT * FROM flights WHERE id = $1;`, [flightId]);
+};
+
+export async function getAllflights(){
+    return await db.query(`SELECT * FROM flights ORDER BY date ASC;`);
+};
+
+export async function getDestinationFlights(destination) {
+    return await db.query(`SELECT * FROM flights WHERE destination = $1 ORDER BY date ASC;`, [destination]);
+};
+
+export async function getOriginFlights(origin) {
+    return await db.query(`SELECT * FROM flights WHERE origin = $1 ORDER BY date ASC;`, [origin]);
+};
+
+export async function getWayFlights(origin, destination){
+    return await db.query(`SELECT * FROM flights WHERE origin = $1 AND destination = $2 ORDER BY date ASC;`, [origin, destination]);
 }
