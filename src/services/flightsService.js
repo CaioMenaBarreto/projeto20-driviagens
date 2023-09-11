@@ -143,7 +143,6 @@ export async function getFligthsService(origin, destination, biggerDate, smaller
                 selectedFlights.push(flights.rows[i]);
             };
         };
-        console.log(selectedFlights);
 
         const city = await getOriginCities(origin);
         if (city.rowCount === 0) {
@@ -176,6 +175,8 @@ export async function getFligthsService(origin, destination, biggerDate, smaller
         if (parsedSmallerDate.isAfter(parsedBiggerDate)) {
             throw { type: "badRequest", message: "A smaller-date deve ser anterior à bigger-date" };
         };
+
+        console.log(parsedSmallerDate, parsedBiggerDate);
 
         flights = await getAllflights();
         flights.rows.forEach((flight) => {
